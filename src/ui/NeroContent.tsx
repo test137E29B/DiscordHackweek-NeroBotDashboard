@@ -23,8 +23,10 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const NeroContent = () => {
   const classes = useStyles();
-  const urr = useReactRouter();
-  const activePage = getActivePage(pages, urr.location.pathname);
+  const {
+    location: { pathname }
+  } = useReactRouter();
+  const activePage = getActivePage(pages, pathname);
   const { title, description } = activePage
     ? activePage
     : { title: "", description: "" };

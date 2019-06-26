@@ -104,7 +104,9 @@ const reduceChildRoutes = ({
 
 export const NeroAppDrawer: React.FunctionComponent = () => {
   const classes = useStyles();
-  const urr = useReactRouter();
+  const {
+    location: { pathname }
+  } = useReactRouter();
   const drawerFooter = (
     <Typography
       variant="caption"
@@ -123,7 +125,7 @@ export const NeroAppDrawer: React.FunctionComponent = () => {
       open
       classes={{ paper: clsx(classes.drawerPaper, "hidden-scroll") }}
     >
-      {renderNavItems({ pages, depth: 0, pathname: urr.location.pathname })}
+      {renderNavItems({ pages, pathname, depth: 0 })}
       {drawerFooter}
     </Drawer>
   );

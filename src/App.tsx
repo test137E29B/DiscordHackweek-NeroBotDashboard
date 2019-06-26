@@ -20,8 +20,10 @@ const useStyles = makeStyles((theme: Theme) =>
 const App: React.FC = () => {
   const classes = useStyles();
   const [loggedIn] = useState(true);
-  const urr = useReactRouter();
-  const isRoot = urr.location.pathname === routes.ROOT;
+  const {
+    location: { pathname }
+  } = useReactRouter();
+  const isRoot = pathname === routes.ROOT;
 
   const displayRoot: boolean = !!isRoot || !loggedIn;
   const displayDashboard: boolean = !displayRoot;
