@@ -5,26 +5,30 @@ import { NeroAppDrawerItem } from "./NeroAppDrawerItem";
 import { pages, Page } from "../config/pages";
 import { pageToTitle } from "../lib/helpers";
 import useReactRouter from "use-react-router";
+import clsx from "clsx";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {
-      display: "flex"
-    },
     drawer: {
       width: theme.spacing(28),
-      flexShrink: 0
+      flexShrink: 0,
+      height: "100%"
     },
     drawerPaper: {
       width: theme.spacing(28),
-      zIndex: 0
-    },
-    toolbar: {
-      minHeight: "64px"
+      zIndex: 0,
+      height: "100%",
+      position: "relative",
+      "&::-webkit-scrollbar": {
+        display: "none"
+      }
     },
     drawerFooterText: {
       padding: theme.spacing(1, 2),
       color: theme.palette.text.secondary
+    },
+    test: {
+      overflow: "hidden"
     }
   })
 );
@@ -70,6 +74,7 @@ const reduceChildRoutes = ({
         depth={depth}
         key={title}
         title={title}
+        isactive={false}
       >
         {renderNavItems({
           pages: page.children,
@@ -89,7 +94,7 @@ const reduceChildRoutes = ({
         key={title}
         title={title}
         href={page.pathname}
-        isActive={page.pathname === pathname}
+        isactive={page.pathname ? page.pathname === pathname : undefined}
       />
     );
   }
@@ -113,11 +118,11 @@ export const NeroAppDrawer: React.FunctionComponent = () => {
 
   return (
     <Drawer
-      className={classes.drawer}
+      className={clsx(classes.drawer, "hidden-scroll")}
       variant="permanent"
-      classes={{ paper: classes.drawerPaper }}
+      open
+      classes={{ paper: clsx(classes.drawerPaper, "hidden-scroll") }}
     >
-      <div className={classes.toolbar} />
       {renderNavItems({ pages, depth: 0, pathname: urr.location.pathname })}
       {drawerFooter}
     </Drawer>
