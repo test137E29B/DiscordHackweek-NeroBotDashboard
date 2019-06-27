@@ -19,3 +19,15 @@ export const pageToTitle = (page: Page): string => {
 
   return titleize(name);
 };
+
+export const getActivePage = (pages: Page[], pathname: string): Page | null => {
+  for (const page of pages) {
+    if (page.children) {
+      for (const child of page.children) {
+        if (child.pathname === pathname) return child;
+      }
+    } else if (page.pathname === pathname) return page;
+  }
+
+  return null;
+};

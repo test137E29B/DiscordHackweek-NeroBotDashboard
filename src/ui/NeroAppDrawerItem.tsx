@@ -8,7 +8,6 @@ import {
   Button
 } from "@material-ui/core";
 import clsx from "clsx";
-import { Link } from "react-router-dom";
 import useReactRouter from "use-react-router";
 
 const MuiButton = (props: any) => <Button {...props} />;
@@ -56,13 +55,13 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: "0",
       height: theme.spacing(5),
       borderRadius: "0",
-      backgroundColor: props.isActive ? "rgba(92,92,92,0.16)" : "inherit",
-      color: props.isActive
+      backgroundColor: props.isactive ? "rgba(92,92,92,0.16)" : "inherit",
+      color: props.isactive
         ? theme.palette.primary.main
         : theme.palette.text.secondary
     }),
     buttonLeafIcon: (props: NeroAppDrawerItemProps) => ({
-      color: props.isActive
+      color: props.isactive
         ? theme.palette.primary.main
         : theme.palette.text.secondary
     }),
@@ -78,10 +77,9 @@ interface NeroAppDrawerItemProps {
   title?: string;
   Icon?: React.ComponentClass<{ className: string }>;
   children?: React.ReactElement | null;
-  key: any;
   naked?: boolean;
   depth?: number;
-  isActive?: boolean;
+  isactive?: boolean;
 }
 
 export const NeroAppDrawerItem: React.FunctionComponent<
@@ -89,7 +87,7 @@ export const NeroAppDrawerItem: React.FunctionComponent<
 > = props => {
   const classes = useStyles(props);
   const { history } = useReactRouter();
-  const { children, naked, href, Icon, title, key, depth, ...other } = props;
+  const { children, naked, href, Icon, title, depth, ...other } = props;
 
   const style: React.CSSProperties = {
     paddingLeft: 16
@@ -100,10 +98,7 @@ export const NeroAppDrawerItem: React.FunctionComponent<
       <React.Fragment>
         <ListItem className={classes.itemLeaf} disableGutters {...other}>
           <MuiButton
-            component={Link}
-            naked
             href={href}
-            activeClassName={classes.active}
             className={clsx(classes.buttonLeaf, `depth-${depth}`)}
             classes={{ label: classes.label }}
             disableTouchRipple
