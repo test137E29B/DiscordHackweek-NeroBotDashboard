@@ -72,7 +72,7 @@ const reduceChildRoutes = ({
       <NeroAppDrawerItem
         Icon={page.icon}
         depth={depth}
-        key={title}
+        key={title + depth + page.children.length}
         title={title}
         isactive={false}
       >
@@ -88,13 +88,14 @@ const reduceChildRoutes = ({
     const title = pageToTitle(page);
     page =
       page.children && page.children.length === 1 ? page.children[0] : page; // tslint:disable-line:no-parameter-reassignment
+    const isactive = page.pathname ? page.pathname === pathname : false;
     items.push(
       <NeroAppDrawerItem
         Icon={page.icon}
-        key={title}
+        key={title + page.pathname}
         title={title}
         href={page.pathname}
-        isactive={page.pathname ? page.pathname === pathname : undefined}
+        isactive={isactive}
       />
     );
   }
