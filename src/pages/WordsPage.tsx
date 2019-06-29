@@ -1,7 +1,6 @@
 import React from "react";
 import { makeStyles, createStyles } from "@material-ui/styles";
 import { Theme } from "@material-ui/core/styles";
-import { FeaturesForm } from "../components/Features/FeaturesForm";
 import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -14,14 +13,12 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export const FeaturesPage = () => {
+export const WordsPage = () => {
   const classes = useStyles();
 
   return (
     <React.Fragment>
-      <Paper className={classes.paper}>
-        <FeaturesForm />
-      </Paper>
+      <Paper className={classes.paper}>Coming Soon</Paper>
     </React.Fragment>
   );
 };

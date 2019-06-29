@@ -1,5 +1,5 @@
 import { routes } from "./routes";
-import Announcement from "@material-ui/icons/Announcement";
+// import Announcement from "@material-ui/icons/Announcement";
 import Dashboard from "@material-ui/icons/Dashboard";
 import Info from "@material-ui/icons/Info";
 import LinkOff from "@material-ui/icons/LinkOff";
@@ -60,14 +60,14 @@ export const pages: Page[] = [
         title: "Invites",
         description:
           "Blacklist advertising other Discord Servers, and perform commands if they are sent in a message by a user."
-      },
-      {
-        pathname: routes.AUTOMOD_SPAM,
-        icon: Announcement,
-        title: "Spam",
-        description:
-          "Prevent against spam, and perform commands if a user is spamming a channel."
       }
+      // {
+      //   pathname: routes.AUTOMOD_SPAM,
+      //   icon: Announcement,
+      //   title: "Spam",
+      //   description:
+      //     "Prevent against spam, and perform commands if a user is spamming a channel."
+      // }
     ]
   },
   {
