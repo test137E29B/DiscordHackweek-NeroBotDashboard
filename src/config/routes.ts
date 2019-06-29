@@ -1,6 +1,7 @@
 export const routes = {
   // NOT IN NAVBAR
   ROOT: "/",
+  LOGIN: "/login",
 
   // UNGROUPED
   DASHBOARD: "/dashboard",
@@ -10,7 +11,7 @@ export const routes = {
   AUTOMOD_PERSPECTIVE: "/automod/perspective",
   AUTOMOD_WORDS: "/automod/words",
   AUTOMOD_INVITES: "/automod/invites", // aka INVITE
-  AUTOMOD_SPAM: "/automod/spam", // aka REPETITION
+  // AUTOMOD_SPAM: "/automod/spam", // aka REPETITION
 
   // ROLES
   ROLES_SETTINGS: "/roles/settings",

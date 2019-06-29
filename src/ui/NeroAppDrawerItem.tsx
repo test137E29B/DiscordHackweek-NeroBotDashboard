@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 import clsx from "clsx";
 import useReactRouter from "use-react-router";
+import { Link } from "react-router-dom";
 
 const MuiButton = (props: any) => <Button {...props} />;
 
@@ -79,7 +80,7 @@ interface NeroAppDrawerItemProps {
   children?: React.ReactElement | null;
   naked?: boolean;
   depth?: number;
-  isactive?: boolean;
+  isactive: boolean;
 }
 
 export const NeroAppDrawerItem: React.FunctionComponent<
@@ -88,6 +89,7 @@ export const NeroAppDrawerItem: React.FunctionComponent<
   const classes = useStyles(props);
   const { history } = useReactRouter();
   const { children, naked, href, Icon, title, depth, ...other } = props;
+  delete other.isactive;
 
   const style: React.CSSProperties = {
     paddingLeft: 16
@@ -98,13 +100,14 @@ export const NeroAppDrawerItem: React.FunctionComponent<
       <React.Fragment>
         <ListItem className={classes.itemLeaf} disableGutters {...other}>
           <MuiButton
+            component={Link}
             href={href}
             className={clsx(classes.buttonLeaf, `depth-${depth}`)}
             classes={{ label: classes.label }}
             disableTouchRipple
             fullWidth
             style={style}
-            onClick={() => history.push(href)}
+            onClick={() => history.replace(href)}
           >
             {Icon !== undefined && <Icon className={classes.buttonLeafIcon} />}
             <div className={classes.typography}>{title}</div>
